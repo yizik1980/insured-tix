@@ -25,11 +25,4 @@
     <year>2003</year>
     <price>39.95</price>
   </book>
-  <book category="drama">
-    <isbn>52743565555</isbn>
-    <title lang="en">jerry Musquin</title>
-    <author>david salvador</author>
-    <year>1970</year>
-    <price>23.00</price>
-  </book>
 </bookstore>
