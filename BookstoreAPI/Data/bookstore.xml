@@ -25,4 +25,18 @@
     <year>2003</year>
     <price>39.95</price>
   </book>
+  <book category="classic" cover="classic book">
+    <isbn>2198409599</isbn>
+    <title lang="en">rozy bonanza</title>
+    <author>bony claid</author>
+    <year>1964</year>
+    <price>23.40</price>
+  </book>
+  <book category="kids novel" cover="paper bag">
+    <isbn>920580429384</isbn>
+    <title lang="en">tom sohiar</title>
+    <author>unknown</author>
+    <year>1955</year>
+    <price>30.00</price>
+  </book>
 </bookstore>

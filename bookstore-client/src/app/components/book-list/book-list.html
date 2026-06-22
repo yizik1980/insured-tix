@@ -15,9 +15,9 @@
   }
 
   @if (books().length > 0) {
-    <div class="book-grid">
+    <div class="book-list">
       @for (book of books(); track book.isbn) {
-        <div class="book-card">
+        <div class="book-grid">
           <div class="card-body">
             <div class="card-title">{{ book.title }}</div>
             <div class="card-authors">{{ formatAuthors(book.authors) }}</div>
