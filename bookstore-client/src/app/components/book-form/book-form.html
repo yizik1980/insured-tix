@@ -1,0 +1,62 @@
+<div class="form-overlay">
+  <div class="form-card">
+    <h2>{{ isEdit ? 'Edit Book' : 'Add Book' }}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="field">
+        <label>ISBN *</label>
+        <input formControlName="isbn" [readOnly]="isEdit" />
+      </div>
+
+      <div class="field">
+        <label>Title *</label>
+        <input formControlName="title" />
+      </div>
+
+      <div class="field">
+        <label>Title Language</label>
+        <input formControlName="titleLang" />
+      </div>
+
+      <div class="field">
+        <label>Category *</label>
+        <input formControlName="category" />
+      </div>
+
+      <div class="field">
+        <label>Cover</label>
+        <input formControlName="cover" placeholder="e.g. paperback" />
+      </div>
+
+      <div class="field row">
+        <div class="half">
+          <label>Year *</label>
+          <input type="number" formControlName="year" />
+        </div>
+        <div class="half">
+          <label>Price *</label>
+          <input type="number" step="0.01" formControlName="price" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Author(s) *</label>
+        <div formArrayName="authors">
+          @for (ctrl of authors.controls; track $index) {
+            <div class="author-row">
+              <input [formControlName]="$index" placeholder="Author name" />
+              <button type="button" class="btn-icon" (click)="removeAuthor($index)"
+                      [disabled]="authors.length === 1">✕</button>
+            </div>
+          }
+        </div>
+        <button type="button" class="btn-secondary" (click)="addAuthor()">+ Add Author</button>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-secondary" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn-primary" [disabled]="form.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

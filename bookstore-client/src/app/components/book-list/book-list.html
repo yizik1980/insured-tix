@@ -1,0 +1,63 @@
+<div class="page">
+  <app-header
+    (addBook)="openAdd()"
+    (openReport)="openReport()"
+    (downloadReport)="downloadReport()" />
+
+
+
+  @if (error()) {
+    <div class="status error">{{ error() }}</div>
+  }
+
+  @if (books().length === 0 && !error()) {
+    <div class="status">No books found. Add one!</div>
+  }
+
+  @if (books().length > 0) {
+    <div class="book-grid">
+      @for (book of books(); track book.isbn) {
+        <div class="book-card">
+          <div class="card-body">
+            <div class="card-title">{{ book.title }}</div>
+            <div class="card-authors">{{ formatAuthors(book.authors) }}</div>
+            <div class="card-meta">
+              <span class="badge">{{ book.category }}</span>
+              @if (book.cover) {
+                <span class="meta-item">{{ book.cover }}</span>
+              }
+            </div>
+          </div>
+          <div class="card-caption">
+            <span class="isbn">{{ book.isbn }}</span>
+            <span>{{ book.year }}</span>
+            <span class="price">{{ book.price | number:'1.2-2' }}</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-edit" (click)="openEdit(book)">Edit</button>
+            <button class="btn-delete" (click)="delete(book)">Delete</button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+@if (showForm()) {
+  <app-book-form
+    [book]="editingBook()"
+    (save)="onSave($event)"
+    (cancel)="closeForm()" />
+}
+
+@if (showReport()) {
+  <div class="report-overlay" (click)="closeReport()">
+    <div class="report-card" (click)="$event.stopPropagation()">
+      <div class="report-header">
+        <strong>HTML Report Preview</strong>
+        <button class="btn-icon" (click)="closeReport()">✕</button>
+      </div>
+      <div class="report-body" [innerHTML]="reportHtml()"></div>
+    </div>
+  </div>
+}

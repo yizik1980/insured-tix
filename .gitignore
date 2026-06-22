@@ -1,0 +1,30 @@
+# ===== .NET / C# =====
+bin/
+obj/
+Logs/
+*.user
+*.suo
+.vs/
+*.log
+*.nupkg
+TestResults/
+publish/
+
+# ===== Angular / Node =====
+bookstore-client/node_modules/
+bookstore-client/dist/
+bookstore-client/.angular/
+bookstore-client/.sass-cache/
+bookstore-client/npm-debug.log*
+bookstore-client/yarn-error.log
+bookstore-client/.env
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.swp
